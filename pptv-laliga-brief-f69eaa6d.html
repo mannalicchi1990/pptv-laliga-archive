@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西甲直播 · 赛事信息</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1a1a2e;
+            line-height: 1.7;
+            padding: 2.5rem 1rem;
+        }
+
+        .page-wrapper {
+            max-width: 780px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 2rem;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.03);
+            padding: 3rem 2rem;
+        }
+
+        @media (max-width: 600px) {
+            .page-wrapper {
+                padding: 2rem 1.2rem;
+                border-radius: 1.5rem;
+            }
+        }
+
+        /* 主视觉 — 简洁信息卡 */
+        .hero-card {
+            background: #f0f4fb;
+            border-radius: 1.8rem;
+            padding: 2.5rem 2rem;
+            margin-bottom: 3rem;
+            text-align: left;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .hero-card h1 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            color: #0b2230;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero-card .badge {
+            display: inline-block;
+            background: #0b2230;
+            color: #f0f4fb;
+            font-size: 0.8rem;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+            margin-top: 0.2rem;
+        }
+
+        .hero-card p {
+            font-size: 1.1rem;
+            margin-top: 1.2rem;
+            color: #2c3e50;
+            max-width: 90%;
+        }
+
+        @media (max-width: 500px) {
+            .hero-card h1 {
+                font-size: 1.9rem;
+            }
+            .hero-card p {
+                font-size: 1rem;
+                max-width: 100%;
+            }
+        }
+
+        /* 正文区域 */
+        section {
+            margin-bottom: 2.8rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #162b38;
+            letter-spacing: -0.01em;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid #eaeef3;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.6rem;
+            color: #1f3a4a;
+        }
+
+        .card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.8rem 0 0.8rem;
+        }
+
+        .info-card {
+            background: #fafcfe;
+            border: 1px solid #eef2f7;
+            border-radius: 1.5rem;
+            padding: 1.5rem 1.3rem;
+            flex: 1 1 180px;
+            min-width: 150px;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .info-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.02);
+        }
+
+        .info-card .emoji {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .info-card p {
+            font-size: 0.95rem;
+            color: #2f4052;
+        }
+
+        .highlight-link {
+            background: #eef5fa;
+            border-radius: 2rem;
+            padding: 0.15rem 0.3rem;
+            color: #0b2b3a;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .highlight-link:hover {
+            background: #d3e2ed;
+        }
+
+        .faq-summary {
+            background: #f7fafd;
+            border-radius: 1.4rem;
+            padding: 1.6rem 1.6rem;
+            margin: 2rem 0 0.5rem;
+            border-left: 4px solid #b7ccdb;
+        }
+
+        .faq-summary dt {
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+            color: #1d3442;
+        }
+
+        .faq-summary dd {
+            margin-bottom: 1rem;
+            color: #364f60;
+            font-size: 0.95rem;
+        }
+
+        .faq-summary dd:last-child {
+            margin-bottom: 0;
+        }
+
+        .natural-link-sentence {
+            font-size: 1.05rem;
+            background: #ffffff;
+            padding: 1rem 0 0;
+            border-top: 1px solid #e4eaf1;
+            margin-top: 1.2rem;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e4eaf1;
+            font-size: 0.85rem;
+            color: #6f7e8b;
+            text-align: left;
+        }
+
+        a {
+            color: #0b2b3a;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-color: #b7ccdb;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration-color: #0b2b3a;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+    <!-- 主视觉卡片 -->
+    <div class="hero-card">
+        <span class="badge">赛事信息聚合</span>
+        <h1>西甲直播 · 快速识别</h1>
+        <p>如果你希望立刻确认一个网站是否围绕西甲比赛直播展开，这里提供清晰的用途拆解和内容结构，帮助你判断它是否符合需求。</p>
+    </div>
+
+    <!-- 用途卡片 —— 网站能做什么 -->
+    <section>
+        <h2>◈ 网站用途拆解</h2>
+        <div class="card-grid">
+            <div class="info-card">
+                <span class="emoji">📡</span>
+                <h3>赛事信息索引</h3>
+                <p>聚合西甲联赛相关赛程、球队动态及近期比赛概况，方便快速浏览。</p>
+            </div>
+            <div class="info-card">
+                <span class="emoji">⚽</span>
+                <h3>直播方向参考</h3>
+                <p>内容围绕西甲直播这一主题，为关注西班牙足球联赛的用户提供信息入口。</p>
+            </div>
+            <div class="info-card">
+                <span class="emoji">📋</span>
+                <h3>结构简明</h3>
+                <p>界面以信息卡片和分类模块为主，减少无关信息干扰，突出联赛相关内容。</p>
+            </div>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.95rem; color: #3b5567;">该站定位明确，适合希望快速了解西甲赛事概况、不希望在冗杂信息中筛选的用户。</p>
+    </section>
+
+    <!-- 适合人群 -->
+    <section>
+        <h2>◈ 适合哪些人使用</h2>
+        <ul style="list-style: none; margin-top: 0.8rem;">
+            <li style="margin-bottom: 0.8rem; padding-left: 1.8rem; position: relative;">• 关注西甲联赛但时间有限，需要简洁信息概览的球迷</li>
+            <li style="margin-bottom: 0.8rem; padding-left: 1.8rem; position: relative;">• 想了解网站内容属性、判断是否包含西甲直播相关信息的访客</li>
+            <li style="margin-bottom: 0.8rem; padding-left: 1.8rem; position: relative;">• 西班牙足球联赛的新观众，希望从赛事信息开始熟悉</li>
+        </ul>
+    </section>
+
+    <!-- 自然链接段落 -->
+    <section>
+        <h2>◈ 从识别到使用</h2>
+        <p>判断一个网站是否匹配自己的需求，最直接的方式是查看其核心内容分类。如果你正在寻找围绕西甲联赛组织的信息页面，可以直接浏览 <a href="https://pptv-laliga.com">西甲直播</a> 了解其内容结构是否与你的关注点一致。该站点将比赛动态、赛程预告等元素集中呈现，减少了外围资讯的干扰。</p>
+        <p style="margin-top: 1rem;">在实际使用中，很多用户会先通过一两场关键比赛的信息密度来评估网站对联赛的覆盖程度。如果你希望快速验证这一点，不妨从近期焦点赛事入手，观察页面提供的内容颗粒度。</p>
+        <div class="faq-summary">
+            <dl>
+                <dt>⚡ 常见疑问摘要</dt>
+                <dd>—— 网站是否只覆盖某一个俱乐部？<br>从整体结构看，内容围绕西甲联赛多支球队展开，并非仅限单一俱乐部。</dd>
+                <dd>—— 信息更新频率如何？<br>页面形态以信息卡片和赛程为主，适合作为参考性概览，建议结合官方渠道确认实时信息。</dd>
+            </dl>
+        </div>
+    </section>
+
+    <!-- 附加提示：如何使用信息 -->
+    <div class="natural-link-sentence">
+        <p style="font-weight: 400; color: #1f3a4a;">💡 提示：如果你此前未接触过该站，可以先从首页导航模块了解其内容分类，再判断是否符合自己对 <a href="https://pptv-laliga.com">西甲直播</a> 的信息预期。保持理性判断，以官方赛程为准。</p>
+    </div>
+
+    <div class="footer-note">
+        <span>基于公开信息整理 · 内容方向仅供参考</span>
+    </div>
+
+</div>
+</body>
+</html>
