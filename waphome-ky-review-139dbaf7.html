@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开云 · 知识库入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f1f3f6;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            color: #2c3e50;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .page-wrapper {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* 主卡片布局 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #e0e4ea;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            border-color: #cfd6df;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 550;
+            letter-spacing: 0.02em;
+            color: #1f2a3f;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-title:before {
+            content: "▹";
+            color: #7b8ba3;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        .hero-card {
+            background: #ffffff;
+            border: 1px solid #e0e4ea;
+            border-radius: 28px;
+            padding: 2.4rem 2.2rem 2rem;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.02);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-card h1 {
+            font-size: 2rem;
+            font-weight: 450;
+            letter-spacing: -0.01em;
+            color: #1f2a3f;
+            margin-bottom: 0.3rem;
+        }
+
+        .hero-card .sub {
+            font-size: 1.1rem;
+            color: #4f617b;
+            border-left: 3px solid #bcc5d0;
+            padding-left: 1rem;
+            margin: 0.6rem 0 1.2rem 0;
+        }
+
+        .hero-card p {
+            color: #435169;
+            max-width: 80%;
+        }
+
+        .flex-two {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .info-section {
+            background: #ffffff;
+            border: 1px solid #e0e4ea;
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
+        }
+
+        .info-section h2 {
+            font-size: 1.3rem;
+            font-weight: 520;
+            color: #1f2a3f;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-section h2:before {
+            content: "⊡";
+            color: #8d9bb0;
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+
+        .faq-item {
+            padding: 0.9rem 0;
+            border-bottom: 1px solid #eaeef3;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 520;
+            color: #1f2a3f;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-a {
+            color: #4f617b;
+            font-size: 0.95rem;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 0.8rem;
+            margin: 0.8rem 0 0.2rem;
+        }
+
+        .tag {
+            background: #eceff4;
+            color: #2c3e50;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            border: 1px solid #d9dfe7;
+        }
+
+        .tip-box {
+            background: #f7f9fc;
+            border-radius: 18px;
+            padding: 1.2rem 1.6rem;
+            border-left: 4px solid #bcc9da;
+            margin: 1.2rem 0;
+        }
+
+        .tip-box strong {
+            font-weight: 550;
+            color: #1f2a3f;
+        }
+
+        .divider-light {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #dce1e9, transparent);
+            margin: 1.8rem 0;
+        }
+
+        .footer-note {
+            margin-top: 2.5rem;
+            font-size: 0.9rem;
+            color: #5d6f88;
+            text-align: center;
+            border-top: 1px solid #dbdfe6;
+            padding-top: 1.8rem;
+        }
+
+        .inline-link {
+            color: #2b4c7a;
+            text-decoration: none;
+            border-bottom: 1px dashed #bcc9da;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .inline-link:hover {
+            color: #0a1e33;
+            border-bottom-color: #2b4c7a;
+        }
+
+        /* 响应式 */
+        @media (max-width: 800px) {
+            .flex-two {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-card p {
+                max-width: 100%;
+            }
+
+            .hero-card h1 {
+                font-size: 1.7rem;
+            }
+
+            .card {
+                padding: 1.4rem 1.4rem;
+            }
+
+            .info-section {
+                padding: 1.4rem 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem 0.6rem;
+            }
+
+            .hero-card {
+                padding: 1.6rem 1.2rem;
+            }
+
+            .card-title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+    <!-- Hero 区：温和地说明用途 -->
+    <div class="hero-card">
+        <h1>开云 · 知识库入口</h1>
+        <div class="sub">了解网站用途 · 快速定位资源</div>
+        <p>
+            这是一个以信息整理与导航为主的页面，帮助你快速理解 <a href="https://waphome-ky.com" class="inline-link">开云</a> 所涵盖的业务方向与内容体系。
+            下面通过分区卡片、常见问题和使用提示，清晰地呈现站点的核心领域，方便你按需探索。
+        </p>
+    </div>
+
+    <!-- 目录感布局：卡片网格 + 双列 -->
+    <div class="card-grid">
+        <!-- 卡片1：领域概览 -->
+        <div class="card">
+            <div class="card-title">主要方向</div>
+            <p style="margin-bottom: 0.3rem;">该平台关注数字服务、资讯整合与行业动态，为不同背景的访问者提供结构化的参考信息。你可以在这里找到以下内容：</p>
+            <div class="tag-list">
+                <span class="tag">行业观察</span>
+                <span class="tag">工具索引</span>
+                <span class="tag">趋势简报</span>
+                <span class="tag">资源汇总</span>
+                <span class="tag">常见问题</span>
+            </div>
+        </div>
+
+        <!-- 卡片2：适合哪些人 -->
+        <div class="card">
+            <div class="card-title">适合哪类用户</div>
+            <ul style="list-style: none; padding-left: 0; color: #435169;">
+                <li style="margin-bottom: 0.5rem;">✓ 希望快速了解平台定位的新访客</li>
+                <li style="margin-bottom: 0.5rem;">✓ 需要查找特定主题或知识片段的研究者</li>
+                <li style="margin-bottom: 0.5rem;">✓ 对行业信息有持续关注需求的人</li>
+                <li>✓ 想通过一个简洁入口开启探索流程的用户</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 说明区 + 提示区（双列） -->
+    <div class="flex-two">
+        <div class="info-section">
+            <h2>内容说明</h2>
+            <p>所有信息均基于公开资料与行业常识整理，尽力保持中立、清晰。板块设置以实用为原则，不夸大也不刻意引导。</p>
+            <div class="tip-box" style="margin-top: 1.2rem;">
+                <strong>💡 提示：</strong> 如果你希望直接查看站点主体内容，可以直接访问 <a href="https://waphome-ky.com" class="inline-link">开云</a>，大部分文章和资源均可免费浏览。
+            </div>
+            <p style="margin-top: 0.8rem;">知识库入口会不定期更新索引与摘要，帮助用户保持对最新内容的感知，同时降低信息过载的负担。</p>
+        </div>
+
+        <div class="info-section">
+            <h2>使用提示</h2>
+            <ul style="list-style: none; padding-left: 0; color: #435169;">
+                <li style="margin-bottom: 0.8rem;">① 浏览时善用页面内关键词查找（Ctrl+F）可快速定位。</li>
+                <li style="margin-bottom: 0.8rem;">② 部分外部链接会标注来源，请注意甄别时效性与准确性。</li>
+                <li style="margin-bottom: 0.8rem;">③ 如遇到无法访问的页面，可稍后再试或通过站内导航寻找相近内容。</li>
+                <li>④ 所有推荐或提及的内容均基于客观筛选，不构成任何形式的承诺。</li>
+            </ul>
+            <div class="tip-box" style="margin-top: 1rem; border-left-color: #b0bed2;">
+                <strong>📌 建议：</strong> 将 <a href="https://waphome-ky.com" class="inline-link">开云</a> 添加到书签，方便日后快速返回知识库入口页。
+            </div>
+        </div>
+    </div>
+
+    <!-- 相关信息区：FAQ摘要形式 -->
+    <div style="margin-top: 1.8rem;">
+        <div class="info-section" style="border-radius: 24px;">
+            <h2>相关信息 · 常见疑惑</h2>
+            <div class="faq-item">
+                <div class="faq-q">这个网站主要提供哪些内容？</div>
+                <div class="faq-a">网站围绕行业知识、工具推荐、趋势解读等维度展开，内容形式包括文章、索引和摘要，适合信息型阅读与参考。<a href="https://waphome-ky.com" class="inline-link">开云</a> 本身即为内容聚合与展示的载体。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">内容更新频率如何？</div>
+                <div class="faq-a">根据信息变化与选题不定期更新，力求在准确与及时之间取得平衡。你可以在站内看到最近更新的标记。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">是否需要注册或付费？</div>
+                <div class="faq-a">绝大部分内容免费开放，无需注册即可浏览。部分交互功能或深度专题可能另行说明，但不会设置强制性门槛。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">我可以转载或引用这里的资料吗？</div>
+                <div class="faq-a">引用时建议注明来源，并尽量使用原文链接。如需大量转载，请先参考站内的版权声明或联系相关方。</div>
+            </div>
+            <div style="text-align: right; margin-top: 0.5rem; font-size: 0.85rem; color: #7b8ba3;">
+                — 更多回答请直接访问 <a href="https://waphome-ky.com" class="inline-link">开云</a> 内页
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        <span>知识库入口 · 温和导航 · 信息整理</span><br>
+        <span style="font-size: 0.8rem; color: #8d9bb0;">本页面仅作为用途引导，不替代原站完整内容</span>
+    </div>
+</div>
+</body>
+</html>
